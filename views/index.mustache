@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Express Forms</title>
+    <link rel="stylesheet" href="./main.css">
+  </head>
+  <script>
+  function fnComplete(j)
+  {
+    let id = j.id;
+    let search = document.getElementById("label_"+ id).textContent;
+    document.getElementById("label_"+ id).style.color = "red";
+  }
+  </script>
+  <body>
+    <div class="container">
+      <form action="/" method="post">
+        <input type="text" name="todo" value="" placeholder="Add a todo">
+        <button type="submit">Add todo</button>
+        <div>
+        <ul>
+          {{#todos}}
+          <li>
+              <button type="button" name="btnComplete" id="{{.}}" onClick="fnComplete(this);">Mark as complete</button>
+              <!--<label> {{#index}}{{.}}{{/index}} {{.}}</label>-->
+              <label id="label_{{.}}">{{.}}</label>
+          </li>
+          {{/todos}}
+        </ul>
+      </div>
+      </form>
+    </div>
+  </body>
+</html>
